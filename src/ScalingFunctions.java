@@ -77,8 +77,8 @@ public class ScalingFunctions {
         BufferedImage target = generateTarget(targetHeight, targetWidth);
         double heightRatio = calculateRatio(source.getHeight(), targetHeight);
         double widthRatio = calculateRatio(source.getWidth(), targetWidth);
-        for (int r = 0; r < rowMap.length; ++r) {
-            for (int c = 0; c < columnMap.length; ++c) {
+        for (int r = 0; r < targetHeight; ++r) {
+            for (int c = 0; c < targetWidth; ++c) {
                 target.setRGB(
                         c,
                         r,
