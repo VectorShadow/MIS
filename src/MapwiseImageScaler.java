@@ -9,14 +9,7 @@ public class MapwiseImageScaler {
     private static double calculateRatio(int sourceValue, int targetValue) {
         return (double)sourceValue / (double)targetValue;
     }
-
-    /**
-     * Helper function to generate a new Buffered image of the given height and width.
-     */
-    private static BufferedImage generateTarget(int height, int width) {
-        return new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    }
-
+    
     /**
      * Helper function to map target indices to source indices based on the source to target ratio.
      */
@@ -32,7 +25,7 @@ public class MapwiseImageScaler {
      * @return the scaled image.
      */
     public static BufferedImage scale(BufferedImage source, int targetHeight, int targetWidth) {
-        BufferedImage target = generateTarget(targetHeight, targetWidth);
+        BufferedImage target = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
         double heightRatio = calculateRatio(source.getHeight(), targetHeight);
         double widthRatio = calculateRatio(source.getWidth(), targetWidth);
         for (int r = 0; r < targetHeight; ++r) {
