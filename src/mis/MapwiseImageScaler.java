@@ -1,3 +1,5 @@
+package mis;
+
 import java.awt.image.BufferedImage;
 
 

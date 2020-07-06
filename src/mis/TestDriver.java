@@ -1,3 +1,5 @@
+package mis;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,7 +26,7 @@ public class TestDriver {
         //repeat scaling without preset maps test
 //        start = System.currentTimeMillis();
 //        for (int i = 0; i < 64; ++i) {
-//            targetImage = MapwiseImageScaler.scale(sourceImage, TARGET_HEIGHT, TARGET_WIDTH);
+//            targetImage = core.MapwiseImageScaler.scale(sourceImage, TARGET_HEIGHT, TARGET_WIDTH);
 //        }
 //        stop = System.currentTimeMillis();
 //        System.out.println("Scaled image without preset maps repeatedly in " + (stop - start) + " ms.");
