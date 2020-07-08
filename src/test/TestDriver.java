@@ -1,4 +1,6 @@
-package mis;
+package test;
+
+import main.MapwiseImageScaler;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

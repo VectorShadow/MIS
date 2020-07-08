@@ -1,4 +1,4 @@
-package mis;
+package main;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,6 +20,10 @@ public class MapwiseImageScaler {
         return (int)Math.floor((double)targetValue * sourceToTargetRatio);
     }
 
+    /**
+     * Find the point in the source image corresponding to the specified point in the target image,
+     * given the dimensions of both images.
+     */
     public static Point mapTargetToSource(Point targetCoordinates, int sourceHeight, int sourceWidth, int targetHeight, int targetWidth) {
         double heightRatio = calculateRatio(sourceHeight, targetHeight);
         double widthRatio = calculateRatio(sourceWidth, targetWidth);
