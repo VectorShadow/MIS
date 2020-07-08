@@ -1,5 +1,6 @@
 package mis;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 
@@ -19,6 +20,12 @@ public class MapwiseImageScaler {
         return (int)Math.floor((double)targetValue * sourceToTargetRatio);
     }
 
+    public static Point mapTargetToSource(Point targetCoordinates, int sourceHeight, int sourceWidth, int targetHeight, int targetWidth) {
+        double heightRatio = calculateRatio(sourceHeight, targetHeight);
+        double widthRatio = calculateRatio(sourceWidth, targetWidth);
+        return new Point(mapByRatio(targetCoordinates.x, widthRatio), mapByRatio(targetCoordinates.y, heightRatio));
+    }
+
     /**
      * Scale the given source image to the given height and width.
      * @param source the image to be scaled.
@@ -28,16 +35,22 @@ public class MapwiseImageScaler {
      */
     public static BufferedImage scale(BufferedImage source, int targetHeight, int targetWidth) {
         BufferedImage target = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
-        double heightRatio = calculateRatio(source.getHeight(), targetHeight);
-        double widthRatio = calculateRatio(source.getWidth(), targetWidth);
         for (int r = 0; r < targetHeight; ++r) {
             for (int c = 0; c < targetWidth; ++c) {
+                Point sourceCoordinate =
+                        mapTargetToSource(
+                                new Point(c, r),
+                                source.getHeight(),
+                                source.getWidth(),
+                                targetHeight,
+                                targetWidth
+                        );
                 target.setRGB(
                         c,
                         r,
                         source.getRGB(
-                                mapByRatio(c, widthRatio),
-                                mapByRatio(r, heightRatio)
+                                sourceCoordinate.x,
+                                sourceCoordinate.y
                         )
                 );
             }
